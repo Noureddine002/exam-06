@@ -131,7 +131,7 @@ int main(int ac, char **av){
         if(select(maxfd + 1, &r, &w, NULL, NULL) < 0)
             fatal();
         for(int fd = 0; fd <= maxfd; fd++){
-            if(FD_ISSET(fd, &r))
+            if(!FD_ISSET(fd, &r))
                 continue;
             if(fd == sockfd){
                 len = sizeof(cli);
